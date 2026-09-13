@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>今日の名言・セリフ</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding-top: 80px;
+      background-color: #f4f5f7;
+      color: #333;
+    }
+    .card {
+      background: #ffffff;
+      max-width: 420px;
+      margin: 0 auto;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+    }
+    h1 {
+      font-size: 18px;
+      color: #888;
+      margin-bottom: 24px;
+      letter-spacing: 1px;
+    }
+    #quote-box {
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+    #quote {
+      font-size: 20px;
+      font-weight: bold;
+      color: #2c3e50;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    #author {
+      font-size: 14px;
+      color: #7f8c8d;
+    }
+    button {
+      background-color: #34495e;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+    button:hover {
+      background-color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>TODAY'S WORDS</h1>
+    
+    <div id="quote-box">
+      <div id="quote">ボタンを押すとセリフが出ます</div>
+      <div id="author"></div>
+    </div>
+
+    <button onclick="generateQuote()">言葉を受け取る</button>
+  </div>
+
+  <script>
+    // ここに好きな名言やセリフ、人物名を登録します
+    const quotes = [
+      {
+        text: "為せば成る、為さねば成らぬ何事も。",
+        author: "上杉鷹山"
+      },
+      {
+        text: "人生に失敗がないと、人生を失敗する。",
+        author: "斎藤茂太"
+      },
+      {
+        text: "昨日の自分より、ほんの少し前へ。",
+        author: "メッセージ"
+      },
+      {
+        text: "お疲れ様です。少し温かいお茶でも淹れましょうか。",
+        author: "執事"
+      }
+    ];
+
+    function generateQuote() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const selected = quotes[randomIndex];
+
+      document.getElementById("quote").innerText = `「${selected.text}」`;
+      document.getElementById("author").innerText = `— ${selected.author}`;
+    }
+  </script>
+
+</body>
+</html>
