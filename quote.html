@@ -45,7 +45,7 @@
       color: #8d859b;
     }
     button {
-      background-color:#e09f9f;
+      background-color: #e09f9f;
       color: white;
       border: none;
       padding: 12px 28px;
@@ -55,7 +55,23 @@
       transition: background-color 0.2s;
     }
     button:hover {
-      background-color: #e09f9f;
+      background-color: #c98888;
+    }
+
+    /* ふわっと浮き出るアニメーション設定 */
+    .fade-in {
+      animation: fadeIn 0.4s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
@@ -73,7 +89,6 @@
   </div>
 
   <script>
-    // ここに好きな名言やセリフ、人物名を登録します
     const quotes = [
       {
         text: "生きろ",
@@ -97,8 +112,21 @@
       const randomIndex = Math.floor(Math.random() * quotes.length);
       const selected = quotes[randomIndex];
 
-      document.getElementById("quote").innerText = `「${selected.text}」`;
-      document.getElementById("author").innerText = `— ${selected.author}`;
+      const quoteEl = document.getElementById("quote");
+      const authorEl = document.getElementById("author");
+
+      // アニメーションを一旦リセット
+      quoteEl.classList.remove("fade-in");
+      authorEl.classList.remove("fade-in");
+
+      // テキストを差し替え
+      quoteEl.innerText = `「${selected.text}」`;
+      authorEl.innerText = `— ${selected.author}`;
+
+      // ブラウザに再描画させてからアニメーションを再付与
+      void quoteEl.offsetWidth;
+      quoteEl.classList.add("fade-in");
+      authorEl.classList.add("fade-in");
     }
   </script>
 
